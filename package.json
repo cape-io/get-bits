@@ -1,0 +1,25 @@
+{
+  "name": "get-bits",
+  "version": "1.0.0",
+  "description": "Get a slice of bits.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cape-io/get-bits.git"
+  },
+  "keywords": [
+    "bits",
+    "slice",
+    "get",
+    "chunk"
+  ],
+  "author": "Kai Curry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cape-io/get-bits/issues"
+  },
+  "homepage": "https://github.com/cape-io/get-bits#readme"
+}
