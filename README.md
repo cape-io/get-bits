@@ -1,4 +1,4 @@
-# get-bits v1.0.0
+# get-bits v1.0.1
 
 Use this when you need to get/slice some bits at an arbitrary bit index from a byte or Uint8Array. Something like a bit-array, bit vector, bit string, bit set, or whatever they are called. Should work equally well in browser or in node. These are only getters.
 
@@ -9,13 +9,13 @@ Use this when you need to get/slice some bits at an arbitrary bit index from a b
 If you're using Node.js type:
 
 ```shell
-npm install --save bits
+npm install --save get-bits
 ```
 
 or
 
 ```shell
-yarn add bits
+yarn add get-bits
 ```
 
 ### Require
