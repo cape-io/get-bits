@@ -30,7 +30,6 @@ describe('getUint32', () => {
     const data2 = get6Array(msg5byteArray, 112, 120)
     expect(data2).toEqual(new Uint8Array([
       2, 12, 1, 3, 11, 32, 7, 15, 12, 4, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32]))
-
     // const data3 = get6Array(msg5byteArray, 70, 42)
     // console.log(data3)
   })
