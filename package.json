@@ -4,15 +4,27 @@
   "description": "Get a slice of bits.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest --watch"
+    "clean": "rimraf lib",
+    "compile": "babel src --out-dir lib",
+    "prepublish": "npm run compile",
+    "lint": "eslint src",
+    "test": "npm run lint && jest --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cape-io/get-bits.git"
   },
   "keywords": [
+    "binary",
     "bits",
+    "bit",
+    "bitarray",
+    "bitmap",
+    "bitset",
+    "bitstring",
+    "bitwise",
     "slice",
+    "string",
     "get",
     "chunk"
   ],
@@ -21,5 +33,17 @@
   "bugs": {
     "url": "https://github.com/cape-io/get-bits/issues"
   },
-  "homepage": "https://github.com/cape-io/get-bits#readme"
+  "homepage": "https://github.com/cape-io/get-bits#readme",
+  "devDependencies": {
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-lodash-fp": "^2.1.3",
+    "jest": "^22.4.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
 }
