@@ -7,6 +7,10 @@ export function subByte(num, start, length) {
   return (num & (0xff >> start)) >> (8 - (length + start))
 }
 
+export function subByteLE(num, start, length) {
+  return (num >> start) & (0xff >> (8 - length))
+}
+
 // Get a slice of up to 32 bits from a Uint8Array.
 // @param start: The bit index.
 export function getUint32(arr, start, length) {
@@ -40,7 +44,7 @@ export function getUint32(arr, start, length) {
 
 // @param start: The bit index.
 export function getDataView(arr, start, length) {
-  let remain = length
+  let remain = length // length in bits.
   const byteFraction = length / 8
   // Following two lines replace Math.ceil(n). It's twice as fast.
   let bytes = (byteFraction << 0)
@@ -75,6 +79,7 @@ export function getDataView(arr, start, length) {
   return result
 }
 
+// Go from byte array to array of six bit numbers.
 // @TODO Make this faster! :-)
 export function get6Array(arr, start, length) {
   // calculate max possible based on arr size.
@@ -88,7 +93,7 @@ export function get6Array(arr, start, length) {
   return result
 }
 
-export const toUint8Array = res => new Uint8Array(res.buffer)
+export const toUint8Array = (res) => new Uint8Array(res.buffer)
 export const getBytes = flow(getDataView, toUint8Array)
 
 export function getIntOrBytes(arr, start, length, get6) {

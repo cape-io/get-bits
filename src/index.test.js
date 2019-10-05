@@ -1,5 +1,8 @@
 /* globals describe test expect */
-import { get6Array, getDataView, getUint32, getBytes, subByte } from './index'
+import {
+  get6Array, getDataView, getUint32, getBytes,
+  subByte, subByteLE,
+} from './index'
 import { ais1byteArray, msg5byteArray } from './mock'
 
 describe('subByte', () => {
@@ -16,6 +19,23 @@ describe('subByte', () => {
     expect(subByte(num4, 3, 3)).toBe(0b0)
     const num5 = 0b00011100
     expect(subByte(num5, 3, 4)).toBe(0b1110)
+  })
+})
+describe('subByteLE', () => {
+  test('returns a slice of the byte', () => {
+    const num1 = 0b00001111
+    expect(subByteLE(num1, 0, 3)).toBe(0b111)
+    expect(subByteLE(num1, 0, 4)).toBe(0b1111)
+    expect(subByteLE(num1, 4, 4)).toBe(0b0000)
+    const num2 = 0b10110101
+    expect(subByteLE(num2, 2, 3)).toBe(0b101)
+    // expect(subByteLE(num2, 3, 5)).toBe(0b10101)
+    // const num3 = 0b10100101 // 165
+    // expect(subByteLE(num3, 3, 3)).toBe(0b1)
+    // const num4 = 0b10000001 // 129
+    // expect(subByteLE(num4, 3, 3)).toBe(0b0)
+    // const num5 = 0b00011100
+    // expect(subByteLE(num5, 3, 4)).toBe(0b1110)
   })
 })
 describe('getUint32', () => {
