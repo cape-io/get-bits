@@ -1,6 +1,6 @@
 # get-bits v1.0.1
 
-Use this when you need to get/slice some bits at an arbitrary bit index from a byte or Uint8Array. Something like a bit-array, bit vector, bit string, bit set, or whatever they are called. Should work equally well in browser or in node. These are only getters.
+Use this when you need to get/slice some bits at an arbitrary bit index from a byte or Uint8Array. This is something like a bit-array, bit vector, bit string, bit set, or whatever they are called. Should work equally well in browser or in node. These are only getters.
 
 ## Usage
 
@@ -40,6 +40,9 @@ getUint32(data, 8, 30) // 367572690
 ### `subByte(num, start, length)`
 Bits from a number. Assuming you're working with an 8 bit number.
 
+### `subByteLE(num, start, length)`
+Bits from a number Little Endian. Assuming you're working with an 8 bit number.
+
 ### `getUint32(Uint8Array, start, length)`
 
 ### `getDataView(Uint8Array, start, length)`
@@ -47,6 +50,6 @@ Bits from a number. Assuming you're working with an 8 bit number.
 ### `getBytes(Uint8Array, start, length)`
 
 ### `get6Array()`
-Handy for Base64 encoding.
+Handy for Base64 encoding/decoding.
 
 ### `getIntOrBytes(Uint8Array, start, length, [get6=false])`
