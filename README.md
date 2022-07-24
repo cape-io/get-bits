@@ -53,3 +53,5 @@ Bits from a number Little Endian. Assuming you're working with an 8 bit number.
 Handy for Base64 encoding/decoding.
 
 ### `getIntOrBytes(Uint8Array, start, length, [get6=false])`
+
+### `getUint32LE()`
