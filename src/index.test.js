@@ -1,6 +1,6 @@
 /* globals describe test expect */
 import {
-  get6Array, getDataView, getUint32, getBytes,
+  get6Array, getDataView, getUint32, getUint32LE, getBytes,
   subByte, subByteLE,
 } from './index'
 import { ais1byteArray, msg5byteArray } from './mock'
@@ -54,6 +54,14 @@ describe('getUint32', () => {
     // console.log(data3)
   })
 })
+describe('getUint32LE', () => {
+  const val = new Uint8Array([0, 0, 192, 44, 0, 170, 70, 192])
+  test('returns bits', () => {
+    expect(getUint32LE(val, 0, 21)).toBe(0)
+    expect(getUint32LE(val, 22, 11)).toBe(0)
+  })
+})
+
 describe('getDataView', () => {
   expect(getDataView(msg5byteArray, 0, 6).getUint8(0)).toEqual(5)
 })

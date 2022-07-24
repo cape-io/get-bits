@@ -41,7 +41,34 @@ export function getUint32(arr, start, length) {
   }
   return result
 }
-
+export function getUint32LE(arr, start, length) {
+  // Find the first byte needed from the array.
+  let byteIndex = start / 8 | 0
+  // The start position of the first byte.
+  const bitIndex = start % 8
+  // Size for the first byte.
+  const chunkLength = Math.min(8 - bitIndex, length)
+  // The first byte will have this much 0 padding.
+  let shiftLeft = length - chunkLength
+  // Get what we can get from the first byte.
+  let result = subByteLE(arr[byteIndex], bitIndex, chunkLength) << shiftLeft
+  // Subtract chunk length.
+  let remain = length - chunkLength
+  // while loop was easiest for me to think about. For as long as we need more bits...
+  while (remain) {
+    // The lesser of a full byte or whatever bit count is remaining.
+    const endPos = Math.min(remain, 8)
+    // Subtract bit size of chunk from remaining bits.
+    remain -= endPos
+    // Subtract bit size of chunk from the shiftLeft.
+    shiftLeft -= endPos
+    // Advance Uint8Array index position.
+    byteIndex += 1
+    // Add this chunk to our result using bitwise OR. Move to correct position with shiftLeft.
+    result |= (subByteLE(arr[byteIndex], 0, endPos) << shiftLeft)
+  }
+  return result
+}
 // @param start: The bit index.
 export function getDataView(arr, start, length) {
   let remain = length // length in bits.
